@@ -236,11 +236,6 @@ metrics.areaUnderROC   // 0.711111111111111
 
 ----- with MLlib SVM regression ----------------------
 
-import org.apache.spark.mllib.feature.StandardScaler
-val vectors = trainSet.map(lp => lp.features)
-val scaler = new StandardScaler(withMean = true, withStd = true).fit(vectors)
-val trainScaled = trainSet.map(lp => LabeledPoint(lp.label,scaler.transform(lp.features)))
-
 import org.apache.spark.mllib.classification.SVMWithSGD
 val numIterations = 100
 val model = SVMWithSGD.train(trainScaled, numIterations)
