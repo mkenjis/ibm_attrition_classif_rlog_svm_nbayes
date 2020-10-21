@@ -184,7 +184,7 @@ model.getClass.getSimpleName
 metrics.areaUnderPR   // 0.15789473684210525
 metrics.areaUnderROC  // 0.5
 
----- MLlib Maive Bayes regression --------------
+---- MLlib Naive Bayes regression --------------
 
 import org.apache.spark.mllib.classification.NaiveBayes
 val model = NaiveBayes.train(trainSet)
@@ -261,6 +261,6 @@ model.getClass.getSimpleName
 metrics.areaUnderPR    // 0.26930832829199436
 metrics.areaUnderROC   // 0.7256944444444444
 
------ with Maive Bayes regression ----------------------
+----- with Naive Bayes regression ----------------------
 
 not possible because standardization produces negative values
