@@ -298,32 +298,6 @@ val testSet = sets(1).map( x => x._2)
 
 trainSet.cache
 
-import org.apache.spark.mllib.tree.DecisionTree
-import org.apache.spark.mllib.tree.model.DecisionTreeModel
-
-val categ_travel = rdd1.map( x => x(0)).distinct.zipWithIndex.collect.toMap
-categ_travel: scala.collection.immutable.Map[String,Long] = Map(Non-Travel -> 0, Travel_Frequently -> 1, Travel_Rarely -> 2)
-
-val categ_dept = rdd1.map( x => x(1)).distinct.zipWithIndex.collect.toMap
-categ_dept: scala.collection.immutable.Map[String,Long] = Map(Human Resources -> 0, Sales -> 1, Research & Development -> 2)
-
-val categ_educ_field = rdd1.map( x => x(2)).distinct.zipWithIndex.collect.toMap
-categ_educ_field: scala.collection.immutable.Map[String,Long] = Map(Other -> 2, Medical -> 3, Technical Degree -> 1, Marketing -> 4, Human Resources -> 0, Life Sciences -> 5)
-
-val categ_gender = rdd1.map( x => x(3)).distinct.zipWithIndex.collect.toMap
-categ_gender: scala.collection.immutable.Map[String,Long] = Map(Male -> 0, Female -> 1)
-
-val categ_jobrole = rdd1.map( x => x(4)).distinct.zipWithIndex.collect.toMap
-categ_jobrole: scala.collection.immutable.Map[String,Long] = Map(Research Director -> 8, Sales Representative -> 7, Research Scientist -> 2, Manufacturing Director -> 6, Healthcare Representative -> 3, Sales Executive -> 1, Manager -> 4, Human Resources -> 0, Laboratory Technician -> 5)
-
-val categ_marital = rdd1.map( x => x(5)).distinct.zipWithIndex.collect.toMap
-categ_marital: scala.collection.immutable.Map[String,Long] = Map(Single -> 0, Married -> 1, Divorced -> 2)
-
-val categ_overtime = rdd1.map( x => x(6)).distinct.zipWithIndex.collect.toMap
-categ_overtime: scala.collection.immutable.Map[String,Long] = Map(No -> 0, Yes -> 1)
-
-
-
 val categoricalFeaturesInfo = Map[Int, Int](0->3, 1->3, 2->6, 3->2, 4->9, 5->3, 6->2)
 
 val model = DecisionTree.trainClassifier(trainSet, 2, categoricalFeaturesInfo, "gini", 30, 32)
